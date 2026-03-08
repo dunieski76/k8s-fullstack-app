@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 50px auto;
+  background: #1a1a2e;
+  color: #eee;
+  padding: 0 20px;
+}
+.card {
+  background: #16213e;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+.status {
+  padding: 8px 16px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.ok { background: #0f3460; color: #4ecca3; }
+.err { background: #3d0000; color: #ff6b6b; }
+h1 { color: #4ecca3; }
+button {
+  background: #4ecca3;
+  color: #1a1a2e;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+button:hover { opacity: 0.9; }
+pre {
+  background: #0f3460;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  overflow-x: auto;
+}
