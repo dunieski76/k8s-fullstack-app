@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <h1>Dunieski is here again</h1>
-      <h2>Where things become easier with Kubernetes</h2>
+      <h2>Where things become easier with Kubernetes during deployments</h2>
     </div>
   );
 }
