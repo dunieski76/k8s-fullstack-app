@@ -1,17 +1,21 @@
-name: Build and Push
+name: Build and Deploy
 
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'k8s/**'    # Don't trigger when only k8s manifests change (prevents infinite loop)
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write      # Needs write to push the updated manifest back
       packages: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -26,5 +30,14 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/dunieski76/k8s-fullstack-app:latest
             ghcr.io/dunieski76/k8s-fullstack-app:${{ github.sha }}
+            ghcr.io/dunieski76/k8s-fullstack-app:latest
+
+      - name: Update Kubernetes manifest with new image tag
+        run: |
+          sed -i "s|image: ghcr.io/dunieski76/k8s-fullstack-app:.*|image: ghcr.io/dunieski76/k8s-fullstack-app:${{ github.sha }}|" k8s/frontend.yaml
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add k8s/frontend.yaml
+          git commit -m "Deploy: update frontend image to ${{ github.sha }}"
+          git push
