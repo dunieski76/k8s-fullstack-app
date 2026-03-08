@@ -27,22 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>☸️ Kubernetes Fullstack App</h1>
-      <div className="card">
-        <h3>Frontend: React</h3>
-        <span className="status ok">Running</span>
-      </div>
-      <div className="card">
-        <h3>Backend API</h3>
-        <span className={`status ${ok === true ? 'ok' : ok === false ? 'err' : ''}`}>{apiStatus}</span>
-        <br /><br />
-        <button onClick={checkAPI}>Test Backend Connection</button>
-        {apiResponse && <pre>{apiResponse}</pre>}
-      </div>
-      <div className="card">
-        <h3>Database: PostgreSQL</h3>
-        <span className={`status ${ok === true ? 'ok' : ok === false ? 'err' : ''}`}>{dbStatus}</span>
-      </div>
+      <h1>Dunieski is here</h1>
     </div>
   );
 }
