@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/dunieski76/k8s-fullstack-app:d806275700401af1d363d7dba9dbfbfb9309c4d8
+          image: ghcr.io/dunieski76/k8s-fullstack-app:8c58d433b2ec1dd37af85cc10a5075803c5956d4
           ports: [{containerPort: 80}]
 ---
 apiVersion: v1
